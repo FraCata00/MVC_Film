@@ -25,10 +25,21 @@ textarea {
 
 .btn-lg, .btn-group-lg > .btn {
     border-radius: 10px;
+    background: #4F95DA;
+    cursor: pointer;
+    border: 1px solid #91C9FF;
+    outline: none;
+    transition: 1s ease-in-out;
+}
+
+.btn-lg, .btn-group-lg > .btn:hover {
+    transition: 0.3s ease-in-out;
+    background: #4F95DA;
 }
 
 .btn{
     border-radius: 10px;
+    box-shadow: 2px 2px;
 }
 
 table {
@@ -36,6 +47,8 @@ table {
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 10px;
 }
 
 th,
@@ -47,5 +60,47 @@ td {
 
 th {
     text-align: left;
+}
+
+input[type=text] {
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    background: black;
+    color: white;
+    border: none;
+    height: 25px;
+}
+
+input[type=text]:hover {
+    transition: 0.3s ease-in-out;
+    background: white;
+    color: black;
+    border: none;
+}
+
+input[type=submit] {
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    background: black;
+    color: white;
+    border: none;
+    height: 25px;
+}
+
+input[type=submit]:hover {
+    transition: 0.3s ease-in-out;
+    background: white;
+    color: black;
+    border: none;
+
+}
+
+
+.jumbotron h1, .jumbotron .h1:hover {
+    transition: 0.3s ease-in-out;
+}
+ 
+th{
+    font-size: 18px;
 }
 
