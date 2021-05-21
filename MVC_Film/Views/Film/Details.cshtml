@@ -1,0 +1,66 @@
+﻿@model MVC_Film.Models.Film
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.typeTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primaryTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primaryTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.originalTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.originalTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.runtimeMinutes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.runtimeMinutes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tconst }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

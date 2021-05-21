@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Cloud_FilmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Abbonamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IdAccount" Type="int" Nullable="false" />
+          <Property Name="IdMetodoPagamento" Type="int" Nullable="false" />
+          <Property Name="GiorniAbbonamento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idPersona" Type="nchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="tconst" />
+          </Key>
+          <Property Name="tconst" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="typeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="primaryTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="originalTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="startYear" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="runtimeMinutes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="genres" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetodoPagamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PayPal" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="CodiceFiscale" />
+          </Key>
+          <Property Name="CodiceFiscale" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cognome" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Abbonamento_Account_ID">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Abbonamento" Type="Self.Abbonamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Abbonamento">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abbonamento_MetodoPagamento_ID">
+          <End Role="MetodoPagamento" Type="Self.MetodoPagamento" Multiplicity="1" />
+          <End Role="Abbonamento" Type="Self.Abbonamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetodoPagamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Abbonamento">
+              <PropertyRef Name="IdMetodoPagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_Account_ID">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="CodiceFiscale" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cloud_FilmModelStoreContainer">
+          <EntitySet Name="Abbonamento" EntityType="Self.Abbonamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetodoPagamento" EntityType="Self.MetodoPagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Abbonamento_Account_ID" Association="Self.FK_Abbonamento_Account_ID">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Abbonamento" EntitySet="Abbonamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abbonamento_MetodoPagamento_ID" Association="Self.FK_Abbonamento_MetodoPagamento_ID">
+            <End Role="MetodoPagamento" EntitySet="MetodoPagamento" />
+            <End Role="Abbonamento" EntitySet="Abbonamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_Account_ID" Association="Self.FK_Persona_Account_ID">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cloud_FilmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Abbonamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IdAccount" Type="Int32" Nullable="false" />
+          <Property Name="IdMetodoPagamento" Type="Int32" Nullable="false" />
+          <Property Name="GiorniAbbonamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Abbonamento_Account_ID" FromRole="Abbonamento" ToRole="Account" />
+          <NavigationProperty Name="MetodoPagamento" Relationship="Self.FK_Abbonamento_MetodoPagamento_ID" FromRole="Abbonamento" ToRole="MetodoPagamento" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idPersona" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Abbonamento" Relationship="Self.FK_Abbonamento_Account_ID" FromRole="Account" ToRole="Abbonamento" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Account_ID" FromRole="Account" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="tconst" />
+          </Key>
+          <Property Name="tconst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="typeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="primaryTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="originalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="startYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="runtimeMinutes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="genres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetodoPagamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PayPal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Abbonamento" Relationship="Self.FK_Abbonamento_MetodoPagamento_ID" FromRole="MetodoPagamento" ToRole="Abbonamento" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="CodiceFiscale" />
+          </Key>
+          <Property Name="CodiceFiscale" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Persona_Account_ID" FromRole="Persona" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Abbonamento_Account_ID">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Abbonamento" Type="Self.Abbonamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Abbonamento">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abbonamento_MetodoPagamento_ID">
+          <End Role="MetodoPagamento" Type="Self.MetodoPagamento" Multiplicity="1" />
+          <End Role="Abbonamento" Type="Self.Abbonamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetodoPagamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Abbonamento">
+              <PropertyRef Name="IdMetodoPagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_Account_ID">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="CodiceFiscale" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cloud_FilmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abbonamento" EntityType="Self.Abbonamento" />
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Film" EntityType="Self.Film" />
+          <EntitySet Name="MetodoPagamento" EntityType="Self.MetodoPagamento" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Abbonamento_Account_ID" Association="Self.FK_Abbonamento_Account_ID">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Abbonamento" EntitySet="Abbonamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abbonamento_MetodoPagamento_ID" Association="Self.FK_Abbonamento_MetodoPagamento_ID">
+            <End Role="MetodoPagamento" EntitySet="MetodoPagamento" />
+            <End Role="Abbonamento" EntitySet="Abbonamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_Account_ID" Association="Self.FK_Persona_Account_ID">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cloud_FilmModelStoreContainer" CdmEntityContainer="Cloud_FilmEntities">
+          <EntitySetMapping Name="Abbonamento">
+            <EntityTypeMapping TypeName="Cloud_FilmModel.Abbonamento">
+              <MappingFragment StoreEntitySet="Abbonamento">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="IdMetodoPagamento" ColumnName="IdMetodoPagamento" />
+                <ScalarProperty Name="GiorniAbbonamento" ColumnName="GiorniAbbonamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="Cloud_FilmModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Film">
+            <EntityTypeMapping TypeName="Cloud_FilmModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="tconst" ColumnName="tconst" />
+                <ScalarProperty Name="typeTitle" ColumnName="typeTitle" />
+                <ScalarProperty Name="primaryTitle" ColumnName="primaryTitle" />
+                <ScalarProperty Name="originalTitle" ColumnName="originalTitle" />
+                <ScalarProperty Name="startYear" ColumnName="startYear" />
+                <ScalarProperty Name="runtimeMinutes" ColumnName="runtimeMinutes" />
+                <ScalarProperty Name="genres" ColumnName="genres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetodoPagamento">
+            <EntityTypeMapping TypeName="Cloud_FilmModel.MetodoPagamento">
+              <MappingFragment StoreEntitySet="MetodoPagamento">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PayPal" ColumnName="PayPal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="Cloud_FilmModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="CodiceFiscale" ColumnName="CodiceFiscale" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Cloud_FilmModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

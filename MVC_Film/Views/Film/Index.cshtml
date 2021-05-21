@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MVC_Film.Models.Film>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Catalogo Film</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.primaryTitle)--><p>Titolo</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.startYear)--><p>Anno</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.runtimeMinutes)--><p>Duarata</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.genres)--><p>Genere</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.primaryTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startYear)
+        </td>
+        <td>
+            <p>@Html.DisplayFor(modelItem => item.runtimeMinutes) Minuti</p>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genres)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.tconst }) |
+            @Html.ActionLink("Details", "Details", new { id=item.tconst }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.tconst })
+        </td>
+    </tr>
+}
+
+</table>

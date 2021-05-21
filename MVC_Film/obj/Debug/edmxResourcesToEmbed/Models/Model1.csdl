@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Cloud_FilmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abbonamento">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="IdAccount" Type="Int32" Nullable="false" />
+    <Property Name="IdMetodoPagamento" Type="Int32" Nullable="false" />
+    <Property Name="GiorniAbbonamento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Abbonamento_Account_ID" FromRole="Abbonamento" ToRole="Account" />
+    <NavigationProperty Name="MetodoPagamento" Relationship="Self.FK_Abbonamento_MetodoPagamento_ID" FromRole="Abbonamento" ToRole="MetodoPagamento" />
+  </EntityType>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idPersona" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Abbonamento" Relationship="Self.FK_Abbonamento_Account_ID" FromRole="Account" ToRole="Abbonamento" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Account_ID" FromRole="Account" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="tconst" />
+    </Key>
+    <Property Name="tconst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="typeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="primaryTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="originalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="startYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="runtimeMinutes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="genres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MetodoPagamento">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="PayPal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Abbonamento" Relationship="Self.FK_Abbonamento_MetodoPagamento_ID" FromRole="MetodoPagamento" ToRole="Abbonamento" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="CodiceFiscale" />
+    </Key>
+    <Property Name="CodiceFiscale" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Persona_Account_ID" FromRole="Persona" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Abbonamento_Account_ID">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Abbonamento" Type="Self.Abbonamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Abbonamento">
+        <PropertyRef Name="IdAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Abbonamento_MetodoPagamento_ID">
+    <End Role="MetodoPagamento" Type="Self.MetodoPagamento" Multiplicity="1" />
+    <End Role="Abbonamento" Type="Self.Abbonamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MetodoPagamento">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Abbonamento">
+        <PropertyRef Name="IdMetodoPagamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Account_ID">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="CodiceFiscale" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Cloud_FilmEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abbonamento" EntityType="Self.Abbonamento" />
+    <EntitySet Name="Account" EntityType="Self.Account" />
+    <EntitySet Name="Film" EntityType="Self.Film" />
+    <EntitySet Name="MetodoPagamento" EntityType="Self.MetodoPagamento" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Abbonamento_Account_ID" Association="Self.FK_Abbonamento_Account_ID">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Abbonamento" EntitySet="Abbonamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Abbonamento_MetodoPagamento_ID" Association="Self.FK_Abbonamento_MetodoPagamento_ID">
+      <End Role="MetodoPagamento" EntitySet="MetodoPagamento" />
+      <End Role="Abbonamento" EntitySet="Abbonamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Account_ID" Association="Self.FK_Persona_Account_ID">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

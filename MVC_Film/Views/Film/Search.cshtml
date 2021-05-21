@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVC_Film.Models.Film>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.primaryTitle)--><p>Titolo</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.startYear)--><p>Anno</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.runtimeMinutes)--><p>Durata</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.genres)--><p>Genere</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.primaryTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.runtimeMinutes) Minuti
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genres)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.tconst }) |
+            @Html.ActionLink("Details", "Details", new { id=item.tconst }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.tconst })
+        </td>
+    </tr>
+}
+
+</table>

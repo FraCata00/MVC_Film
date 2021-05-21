@@ -1,0 +1,72 @@
+﻿@model MVC_Film.Models.Film
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.typeTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primaryTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primaryTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.originalTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.originalTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.runtimeMinutes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.runtimeMinutes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genres)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

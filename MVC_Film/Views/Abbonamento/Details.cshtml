@@ -1,0 +1,42 @@
+﻿@model MVC_Film.Models.Abbonamento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Abbonamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GiorniAbbonamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiorniAbbonamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetodoPagamento.PayPal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetodoPagamento.PayPal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
