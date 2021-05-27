@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,16 +26,21 @@ textarea {
 
 .btn-lg, .btn-group-lg > .btn {
     border-radius: 10px;
-    background: #4F95DA;
+    background: black;
     cursor: pointer;
-    border: 1px solid #91C9FF;
+    /*border: 1px solid #91C9FF;*/
     outline: none;
     transition: 1s ease-in-out;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .btn-lg, .btn-group-lg > .btn:hover {
     transition: 0.3s ease-in-out;
-    background: #4F95DA;
+    background: black;
+    border: none;
+    color: white;
+     font-family: 'Roboto', sans-serif;
 }
 
 .btn{
@@ -54,25 +60,30 @@ table {
 th,
 td {
     padding: 18px;
-    background-color: rgba(255,255,255,0.2);
-    color: black;
+    background-color: #212121;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 th {
     text-align: left;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 input[type=text] {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
-    background: black;
+    background: #131313;
     color: white;
     border: none;
     height: 25px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif
 }
 
 input[type=text]:hover {
-    transition: 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     background: white;
     color: black;
     border: none;
@@ -81,10 +92,11 @@ input[type=text]:hover {
 input[type=submit] {
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
-    background: black;
+    background: #131313;
     color: white;
     border: none;
     height: 25px;
+    
 }
 
 input[type=submit]:hover {
@@ -92,9 +104,8 @@ input[type=submit]:hover {
     background: white;
     color: black;
     border: none;
-
+    transform:scale(1.2);
 }
-
 
 .jumbotron h1, .jumbotron .h1:hover {
     transition: 0.3s ease-in-out;
@@ -103,4 +114,44 @@ input[type=submit]:hover {
 th{
     font-size: 18px; 
 }
+
+.jumbotron{
+    background-color: #212121;
+}
+
+.body-content {
+    background-color: #121212;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    color: white;
+}
+
+body{
+    background-color: #121212;    
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: none;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+a:hover {
+    transition: 0.2s ease-in-out;
+    transform: scale(1.2);
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.btn:hover{
+    background: white;
+    color: black;
+}
+
+
 

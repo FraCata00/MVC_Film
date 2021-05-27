@@ -85,8 +85,8 @@ C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\b
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\bin\it\System.Web.WebPages.resources.dll
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\bin\it\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\bin\it\System.Web.WebPages.Razor.resources.dll
-C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.csprojAssemblyReference.cache
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.csproj.CoreCompileInputs.cache
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.csproj.CopyComplete
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.dll
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.pdb
+C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.csproj.AssemblyReference.cache
