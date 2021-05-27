@@ -120,6 +120,33 @@ namespace MVC_Film.Views
             return RedirectToAction("Index");
         }
 
+        public ActionResult Login(string email, string password)
+        {
+            if((email == null)&&(password == null))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            /*Account account = db.Account.Find(email,password);
+            //Account accountPassword = db.Account.Find(password);
+            if((account == null))
+            {
+                return HttpNotFound();
+            }*/
+            var findEmail = db.Account.Where(x => x.Email.Equals(email));
+            var findPassword = db.Account.Where(x => x.Password.Equals(password));
+            if ((findEmail == null) && (findPassword == null))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var account = db.Account.Where(x => x.Email == email && x.Password == password).ToList();
+            if (account == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

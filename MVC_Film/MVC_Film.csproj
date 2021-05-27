@@ -251,6 +251,7 @@
     <Content Include="Views\Persona\Edit.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Film\Search.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
