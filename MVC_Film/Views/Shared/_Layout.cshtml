@@ -38,6 +38,13 @@
                             </ul>
                         }
                     </li>
+                    <li>
+                        @using(Html.BeginForm("Create", "Account", FormMethod.Get)) { 
+                            <ul class="nav navbar-nav" style="margin: 14px;">
+                                <li><input type="submit" value="Registrati" a href="~/Views/Account/Create.cshtml" style="border-radius:6px;"></li> 
+                            </ul>
+                        }
+                    </li>
                 </ul>
             </div>
         </div>

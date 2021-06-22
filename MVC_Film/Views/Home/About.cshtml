@@ -1,7 +1,55 @@
 ﻿@{
     ViewBag.Title = "Chi siamo";
+    <style>
+        table {
+            margin-top: 40px;
+            margin-left: auto;
+            margin-bottom: 40px;
+            margin-right: auto;
+        }
+        table thead tr th{
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 }
+
+
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Siamo un team di sviluppo di Cloud IT Specialist.</p>
+
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="font-size: 14px;">
+    <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric" style="color: white; font-size: 20px;">Nome</th>
+            <th style="color: white; font-size: 20px; text-align: center;">Cognome</th>
+            <th style="color: white; font-size: 20px;">Corso</th>
+        </tr>
+    </thead>
+    <tbody style="justify-items: center;">
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Francesco</td>
+            <td style="text-align: center;">Cataldo</td>
+            <td>Cloud IT Specialist</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Alessandro</td>
+            <td style="text-align: center;">Castellano</td>
+            <td>Cloud IT Specialist</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Mattia</td>
+            <td style="text-align: center;">Marteddu</td>
+            <td>Cloud IT Specialist</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Matteo</td>
+            <td style="text-align: center;">Tosetto</td>
+            <td>Cloud IT Specialist</td>
+        </tr>
+    </tbody>
+</table>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
