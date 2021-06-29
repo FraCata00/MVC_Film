@@ -63,5 +63,7 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.tconst }) |
     @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("View on IMDB", "https://www.imdb.com/title/" + @Html.DisplayFor(model => model.tconst))
+    <!--@Html.ActionLink("View on IMDB", "www.imdb.com/title/" + @Html.DisplayFor(model => model.tconst))-->
+    <a href="https://www.imdb.com/title/@Html.DisplayFor(model => model.tconst)" target="_blank">View on IMDB</a>
+
 </p>
