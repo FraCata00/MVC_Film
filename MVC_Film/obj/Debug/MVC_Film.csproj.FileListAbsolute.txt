@@ -89,4 +89,3 @@ C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\o
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.csproj.CopyComplete
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.dll
 C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.pdb
-C:\Users\Francesco\Desktop\CLOUD IT SPECIALIST\Visual Studio\MVC_Film\MVC_Film\obj\Debug\MVC_Film.csproj.AssemblyReference.cache

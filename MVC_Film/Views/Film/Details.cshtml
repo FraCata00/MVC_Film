@@ -62,5 +62,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.tconst }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("View on IMDB", "https://www.imdb.com/title/" + @Html.DisplayFor(model => model.tconst))
 </p>
